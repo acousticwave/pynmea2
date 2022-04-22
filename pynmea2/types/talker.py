@@ -10,6 +10,87 @@ from decimal import Decimal
 #pylint: disable=missing-docstring
 #pylint: disable=no-init
 #pylint: disable=too-few-public-methods
+
+
+# Implemented by Acousticwave for control of a Ship
+class HTC(TalkerSentence):
+    """ Heading / Track Control Command
+        (ex) $IIHTC,V,0.3,R,T,N,35.0,10.0,0.60,4.8,0.8,0.20,0.8,T,C*5A 
+    """
+    fields = (
+        ("Override", "htc_override"),
+        ("Commanded rudder angle", "htc_cmd_rud_angle", Decimal),
+        ("Commanded rudder direction", "htc_cmd_rud_dir"),
+        ("Selected steering mode", "htc_selected_steer_mode"),
+        ("Turn mode", "htc_turn_mode"),
+        ("Commanded rudder limit", "htc_cmd_rud_lim", Decimal),
+        ("Commanded off-heading limit", "htc_cmd_off_heading_lim", Decimal),
+        ("Commanded radius of turn for heading change", "htc_cmd_rad_of_turn", Decimal),
+        ("Commanded rate of turn for heading change", "htc_cmd_rate_of_turn", Decimal),
+        ("Commanded heading-to-steer", "htc_cmd_heading_steer", Decimal),
+        ("Commanded off-track limit", "htc_cmd_off_track_lim", Decimal),
+        ("Commanded track", "htc_cmd_track", Decimal),
+        ("Heading reference in use", "htc_heading_ref"),
+        ("Sentence status", "htc_sentence_status"),
+    )
+
+
+class HTD(TalkerSentence):
+    """ Heading / Track Control Data
+        (ex) $AGHTD,V,0.1,R,T,N,35.0,10.0,,,0.8,0.20,0.8,T,A,A,A,0.80*5B 
+    """
+    fields = (
+        ("Override", "htd_override"),
+        ("Commanded rudder angle", "htd_cmd_rud_angle", Decimal),
+        ("Commanded rudder direction", "htd_cmd_rud_dir"),
+        ("Selected steering mode", "htd_selected_steer_mode"),
+        ("Turn mode", "htd_turn_mode"),
+        ("Commanded rudder limit", "htd_cmd_rud_lim", Decimal),
+        ("Commanded off-heading limit", "htd_cmd_off_heading_lim", Decimal),
+        ("Commanded radius of turn for heading change", "htd_cmd_rad_of_turn", Decimal),
+        ("Commanded rate of turn for heading change", "htd_cmd_rate_of_turn", Decimal),
+        ("Commanded heading-to-steer", "htd_cmd_heading_steer", Decimal),
+        ("Commanded off-track limit", "htd_cmd_off_track_lim", Decimal),
+        ("Commanded track", "htd_cmd_track", Decimal),
+        ("Heading reference in use", "htd_heading_ref", Decimal),
+        ("Rudder status", "htd_rud_status"),
+        ("Off-heading status", "htd_off_heading_status"),
+        ("Off-track status", "htd_off_track_status"),
+        ("Vessel heading", "htd_heading", Decimal),
+    )
+
+
+class ROR(TalkerSentence):
+    """ Rudder Order Status
+        (ex) $AGROR,0.1,A,,V,B*1F
+    """
+    fields = (
+        ("Starboard (or single) rudder order", "ror_starboard", Decimal),
+        ("Starboard (or single) rudder order status", "ror_starboard_status"),
+        ("Port rudder order", "ror_port", Decimal),
+        ("Port rudder order status", "ror_port_status"),
+        ("Command source location (as TRC)", "ror_cmd_src_loc"),
+    )
+
+
+class XTE2(TalkerSentence):
+    """ Cross-Track Error, Measured
+        (ex) $IIXTE,A,A,0.0046,R,N,A*08 
+    """
+    fields = (
+        ("General Warning Flag", "xte_warning_flag"),
+        ("Lock flag (Not Used)", "xte_lock_flag"),
+        ("Cross Track Error Distance", "xte_cross_track_err_dist", Decimal),
+        ("Correction Direction (L or R)", "xte_correction_dir"),
+        ("Distance Units", "xte_dist_units"),
+        ("Mode indicator", "xte_mode_indicator"),
+    )
+
+
+
+
+
+
 class AAM(TalkerSentence):
     """ Waypoint Arrival Alarm
     """
