@@ -1,3 +1,59 @@
+# pynmea2-ship
+
+`pynmea2-ship` is a python library for the [NMEA 0183](http://en.wikipedia.org/wiki/NMEA_0183) protocol specialized for ships⛴.
+
+`pynmea2-ship` is based on [`pynmea2`](http://github.com/Knio/pynmea2) by Tom Flanagan.
+
+
+
+
+
+## 💿Installation
+
+The recommended way to install `pynmea2-ship` is with [pip](http://pypi.python.org/pypi/pip/)
+
+    $ cd dist
+    $ python3 -m pip install pynmea2-1.18.0.tar.gz
+
+
+
+
+
+## Development guide
+
+### 🗣Adding a new talker-sentence
+
+- Open ```pynmea2/types/talker.py``` and add a new class. The following example shows adding ```class ROR(TalkerSentence)```.
+
+  ```python
+  class ROR(TalkerSentence):
+      """ Rudder Order Status
+      """
+      fields = (
+          ("Starboard (or single) rudder order", "ror_starboard", Decimal),
+          ("Starboard (or single) rudder order status", "ror_starboard_status"),
+          ("Port rudder order", "ror_port", Decimal),
+          ("Port rudder order status", "ror_port_status"),
+          ("Command source location (as TRC)", "ror_cmd_src_loc"),
+      )
+  ```
+
+
+
+### 📦Building a Python package for pip
+
+- After update your code, you can build your code into a Python package for [pip](http://pypi.python.org/pypi/pip/)
+  - ```python3 setup.py sdist```
+  - A folder ```dist``` is generated, and the folder contains a ```.tag.gz``` file.
+- You can convert ```pynmea2-ship``` to the new version
+  - ```python3 -m pip install [Name of the .tar.gz file]```
+
+
+
+
+
+-----*(The contents below are from ```pynmea2``` while forking from http://github.com/Knio/pynmea2.)*----
+
 pynmea2
 =======
 
