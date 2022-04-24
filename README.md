@@ -12,8 +12,10 @@
 
 The recommended way to install `pynmea2-ship` is with [pip](http://pypi.python.org/pypi/pip/)
 
-    $ cd dist
-    $ python3 -m pip install pynmea2-1.18.0.tar.gz
+```
+$ cd dist
+$ python3 -m pip install pynmea2-1.18.0.tar.gz
+```
 
 
 
@@ -47,6 +49,23 @@ The recommended way to install `pynmea2-ship` is with [pip](http://pypi.python.o
   - A folder ```dist``` is generated, and the folder contains a ```.tag.gz``` file.
 - You can convert ```pynmea2-ship``` to the new version
   - ```python3 -m pip install [Name of the .tar.gz file]```
+
+
+
+### 🧪Test examples
+
+- $XXROR
+
+  ```python
+  >>> import pynmea2
+  
+  >>> line = "$AGROR,0.1,A,,V,B*1F"
+  >>> msg = pynmea2.parse(line)
+  >>> msg
+  <ROR(ror_starboard=Decimal('0.1'), ror_starboard_status='A', ror_port=None, ror_port_status='V', ror_cmd_src_loc='B')>
+  ```
+
+  
 
 
 
