@@ -8,6 +8,24 @@
 
 
 
+## 🌠Features
+
+### Autopilot related sentences
+
+- Parsing/generation of **<u>HTC</u>**, **<u>HTD</u>**, and **<u>ROR</u>** sentences are available.
+
+
+
+### Parsing data of VDR
+
+- TODO: code will be updated in this [page](https://github.com/acousticwave/pynmea2-ship/tree/master/examples)
+- Parsing data of VDR (voyage data recoder) is supported
+- **<u>.log data format</u>** → **<u>.csv format</u>** (reference clock can be controlled [sec])
+
+
+
+
+
 ## 💿Installation
 
 The recommended way to install `pynmea2-ship` is with [pip](http://pypi.python.org/pypi/pip/)
