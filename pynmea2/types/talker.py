@@ -12,10 +12,15 @@ from decimal import Decimal
 #pylint: disable=too-few-public-methods
 
 
-# Implemented by Acousticwave for control of a Ship
+# Implemented by Acousticwave (for interfacing with an Autopilot of a ship)
 class HTC(TalkerSentence):
     """ Heading / Track Control Command
-        (ex) $IIHTC,V,0.3,R,T,N,35.0,10.0,0.60,4.8,0.8,0.20,0.8,T,C*5A 
+        (ex) $IIHTC,V,0.3,R,T,N,35.0,10.0,0.60,4.8,0.8,0.20,0.8,T,C*5A
+
+        Custom setting of "htc_selected_steer_mode" field (usually custom $HTC sentence sent to Autopilot is not recorded by VDR)
+        -'F': manual mode
+        -'T': auto-mode or recommended mode
+        -'V': avoidance mode or else
     """
     fields = (
         ("Override", "htc_override"),
@@ -85,8 +90,6 @@ class XTE2(TalkerSentence):
         ("Distance Units", "xte_dist_units"),
         ("Mode indicator", "xte_mode_indicator"),
     )
-
-
 
 
 
